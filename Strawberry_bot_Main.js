@@ -1,7 +1,6 @@
 var allsee = new Array(1000).join(String.fromCharCode(847));
 var room_list = [];
 var sdcard = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
-var allsee = new Array(1000).join(String.fromCharCode(847));
 
 function save(folderName, fileName, str) {
     var c = new java.io.File(sdcard + "/" + folderName + "/" + fileName);
@@ -106,7 +105,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
     } catch (e) {
         var error = Api.getTran("en", "ko", e);
         var line = e.lineNumber;
-        replier.reply("\n스크립트 에러가 발생했습니다!\n" + AllView + "\n행 : " + line + "\n" + error + "\n\n" + e + "\n");
+        replier.reply("\n스크립트 에러가 발생했습니다!\n" + allsee + "\n행 : " + line + "\n" + error + "\n\n" + e + "\n");
         Log.error(e + "\n\n" + error, viewToast = false);
     }
 }
