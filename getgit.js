@@ -67,7 +67,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
     if(msg.indexOf("/파일")==0){
         replier.reply(Api.getScriptNames());
     }
-    if (msg.indexOf("/저장")==0) {
+    if (msg.indexOf("/읽기")==0) {
         var readscript = msg.substr(5);
         DB.readscriptdata = function() {
             try {
