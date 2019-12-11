@@ -35,7 +35,6 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
     if (command(msg)[0] == "/저장") {
         var name = command(msg)[1].split('=')[0];
         var scripturl = command(msg)[1].split('=')[1];
-
         DB.loadscriptdata = function() {
             try {
                 var url = new java.net.URL(scripturl);
