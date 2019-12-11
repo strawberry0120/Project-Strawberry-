@@ -31,36 +31,68 @@ function command(cmd) {
     var param = cmd.substring(cmd_str.length + 1, cmd.length);
     return [cmd_str, param];
 }
-
-DB.loadscriptdata = function() {
-    try {
-        var url = new java.net.URL(scripturl);
-        var con = url.openConnection();
-        if (con != null) {
-            con.setConnectTimeout(5000);
-            con.setUseCaches(false);
-            var isr = new java.io.InputStreamReader(con.getInputStream());
-            var br = new java.io.BufferedReader(isr);
-            var str = br.readLine();
-            var line = "";
-            while ((line = br.readLine()) != null) {
-                str += "\n" + line;
-            }
-            isr.close();
-            br.close();
-            con.disconnect();
-        }
-        return str.toString();
-    } catch (e) {
-        Log.debug(e);
-    }
-};
 function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName, threadId) {
-    if (command(msg)[0] == "/저장 ") {
-        var name = command(msg)[1].split(':')[0];
-        var scripturl = command(msg)[1].split(':')[1];
-        var script = DB.loadscriptdata();
+    if (command(msg)[0] == "/저장") {
+        var name = command(msg)[1].split('=')[0];
+        var scripturl = command(msg)[1].split('=')[1];
+
+        DB.loadscriptdata = function() {
+            try {
+                var url = new java.net.URL(scripturl);
+                var con = url.openConnection();
+                if (con != null) {
+                    con.setConnectTimeout(5000);
+                    con.setUseCaches(false);
+                    var isr = new java.io.InputStreamReader(con.getInputStream());
+                    var br = new java.io.BufferedReader(isr);
+                    var str = br.readLine();
+                    var line = "";
+                    while ((line = br.readLine()) != null) {
+                        str += "\n" + line;
+                    }
+                    isr.close();
+                    br.close();
+                    con.disconnect();
+                }
+                return str.toString();
+            } catch (e) {
+                Log.debug(e);
+            }
+        };
+
+        var scriptsave = DB.loadscriptdata();
         save("katalkbot", name+".js", script);
-        replier.reply(name+".js"+"의 이름으로 "+script+"를 저장했습니다");
+        replier.reply(name+".js"+"의 이름으로 "+scriptsave+"를 저장했습니다");
+    }
+    if(msg.indexOf("/파일")==0){
+        replier.reply(Api.getScriptNames());
+    }
+    if (msg.indexOf("/저장")==0) {
+        var readscript = msg.substr(5);
+        DB.readscriptdata = function() {
+            try {
+                var url = new java.net.URL(readscript);
+                var con = url.openConnection();
+                if (con != null) {
+                    con.setConnectTimeout(5000);
+                    con.setUseCaches(false);
+                    var isr = new java.io.InputStreamReader(con.getInputStream());
+                    var br = new java.io.BufferedReader(isr);
+                    var str = br.readLine();
+                    var line = "";
+                    while ((line = br.readLine()) != null) {
+                        str += "\n" + line;
+                    }
+                    isr.close();
+                    br.close();
+                    con.disconnect();
+                }
+                return str.toString();
+            } catch (e) {
+                Log.debug(e);
+            }
+        };
+        var scriptread = DB.readscriptdata();
+        replier.reply(scriptread);
     }
 }
