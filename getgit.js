@@ -1,5 +1,6 @@
 var sdcard = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
 var allsee = new Array(1000).join(String.fromCharCode(847));
+const DB = {};
 
 function save(folderName, fileName, str) {
     var c = new java.io.File(sdcard + "/" + folderName + "/" + fileName);
@@ -58,8 +59,8 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
     if (command(msg)[0] == "/저장 ") {
         var name = command(msg)[1].split(':')[0];
         var scripturl = command(msg)[1].split(':')[1];
-        var script = DB.loadscriptdata()
-        save("katalkbot", name+".js", script)
-        replier.reply(name+".js"+"의 이름으로 "+script+"를 저장했습니다")
+        var script = DB.loadscriptdata();
+        save("katalkbot", name+".js", script);
+        replier.reply(name+".js"+"의 이름으로 "+script+"를 저장했습니다");
     }
 }
