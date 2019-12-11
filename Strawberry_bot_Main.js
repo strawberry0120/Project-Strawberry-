@@ -64,9 +64,10 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
         }
         //기능란과 패치노트 란
         else if (msg == "/명령어") {
-            replier.reply("made by 딸기\n\nProject(Strawberry)의 명령어 목록입니다." + allsee + "\n/패치노트 - 역대 패치노트 알림\n/pson - Strawberry_bot을 활성화시킵니다.\n/psoff - Strawberry_bot을 비활성화시킵니다.\n/psinfo - Strawberry_bot의 정보를 띄웁니다.\n" +
-                "/pspw - Strawberry_bot의 전원상태\n/출석,ㅊㅊ,/출석 - 출석체크\n/가르치기 (가르칠말)=(대답할말) -가르치기\n/금지목록 - 가르치기가 금지된 목록(개인챗에서만)\n---로지꾸의 슬롯머신---\njoin! - 슬롯머신 등록\nwallet! - 지갑 정보\n" +
-                "slot! - 슬롯 돌리기\n/나무위키 (검색할말)\n/날씨 (도시)\n/메일쓰기 (보낼사람 프로필 이름 정확히):(보낼말)\n/한강온도")
+            replier.reply("made by 딸기\n\nProject(Strawberry)의 명령어 목록입니다." + allsee 
+                          + "\n/패치노트 - 역대 패치노트 알림\n/pson - Strawberry_bot을 활성화시킵니다.\n/psoff - Strawberry_bot을 비활성화시킵니다.\n/psinfo - Strawberry_bot의 정보를 띄웁니다.\n"
+                          + "/pspw - Strawberry_bot의 전원상태\n/출석,ㅊㅊ,/출석 - 출석체크\n/가르치기 (가르칠말)=(대답할말) -가르치기\n/금지목록 - 가르치기가 금지된 목록(개인챗에서만)\n---로지꾸의 슬롯머신---\njoin! - 슬롯머신 등록\nwallet! - 지갑 정보\n"
+                          + "slot! - 슬롯 돌리기\n/나무위키 (검색할말)\n/날씨 (도시)\n/메일쓰기 (보낼사람 프로필 이름 정확히):(보낼말)\n/한강온도")
         }
         else if (msg == "/패치노트") {
             replier.reply("-----패치노트-----" + allsee + "\n\n개발자 :로지꾸,딸기\n봇 이름:Project(Strawberry)\n\n20191204 ver1 /명령어, /패치노트 추가\n20191204 ver2 /날씨 추가\n20191204 ver3 /배터리양 추가\n20191205 ver1 /배터리양, /업타임 추가\n20191205 ver2 /가르치기 명령어들 추가" +
