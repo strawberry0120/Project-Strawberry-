@@ -68,7 +68,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
         replier.reply(Api.getScriptNames());
     }
     if (msg.indexOf("/읽기")==0) {
-        var readscript = msg.substr(5);
+        var readscript = msg.substr(4);
         DB.readscriptdata = function() {
             try {
                 var url = new java.net.URL(readscript);
