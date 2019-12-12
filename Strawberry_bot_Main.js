@@ -61,21 +61,21 @@ function strawberry(room, msg, sender, isGroupChat, replier, ImageDB, packageNam
     if (msg == msg) {
         DataBase.appendDataBase(room, "\n" + new Date().toLocaleString().replace("GMT+09:00", "") + sender + " : " + msg)
     }
-    if (msg == ("/챗기록") == 0) {
+    if (msg == "/챗기록") {
         replier.reply("----" + (msg.substr(5)) + "방의 이전 채팅기록----" + allsee + DataBase.getDataBase(msg.substr(5) + ".txt"))
     }
-    if (msg == ("/봇 상태") == 0) {
+    if (msg == "/봇 상태") {
         replier.reply("딸기 봇의 배터리가 " + Device.getBatteryLevel() + "%만큼 남았습니다" + "\n" + "충전상황 : " + Device.isCharging());
         //업타임
         let AlarmManager = Api.getContext().getSystemService(android.content.Context.ALARM_SERVICE);
         let mm = (AlarmManager.ELAPSED_REALTIME_WAKEUP, android.os.SystemClock.elapsedRealtime());
 
-        let sec =   (0.001 * mm) % 60;
-        let min = ((0.0001 * mm) / 6) % 60;
-        let hr = ((0.00001 * mm) / 36) % 24;
+        let sec =   (0.001 * mm)        % 60;
+        let min = ((0.0001 * mm) / 6)   % 60;
+        let hr  = ((0.00001 * mm) / 36) % 24;
         replier.reply("현재 가동 시간: " + Math.floor(hr) + "시간 " + Math.floor(min) + "분 " + Math.floor(sec) + "초")
     }
-    if ((sender == "꧁༺순둥딸기༻꧂") && (msg == ("/공지하기")) == 0) {
+    if ((sender == "꧁༺순둥딸기༻꧂") && (msg == "/공지하기")) {
         msg = msg.substr(6);
         for (var i = 0; i < room_list.length; i++) {
             replier.reply(room_list[i], "--전체방에 공지합니다!--\n" + allsee + msg);
