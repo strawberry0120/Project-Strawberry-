@@ -1,4 +1,4 @@
-var sdcard = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+﻿var sdcard = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
 var allsee = new Array(1000).join(String.fromCharCode(847));
 
 function command(cmd) {
