@@ -69,7 +69,8 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
         replier.reply(Api.getScriptNames());
     }
     if (msg.indexOf("/읽기") == 0) {
-        var scriptsave = loadscriptdata(msg.substr(4));
+        var scripturl = loadscriptdata(msg.substr(4));
+        var scriptread = loadscriptdata(scripturl);
         replier.reply(scriptread);
     }
 }
