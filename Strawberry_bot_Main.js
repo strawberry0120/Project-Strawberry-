@@ -69,9 +69,10 @@ function strawberry(room, msg, sender, isGroupChat, replier, ImageDB, packageNam
         //업타임
         let AlarmManager = Api.getContext().getSystemService(android.content.Context.ALARM_SERVICE);
         let mm = (AlarmManager.ELAPSED_REALTIME_WAKEUP, android.os.SystemClock.elapsedRealtime());
-        let sec = (mm / 1000) % 60;
-        let min = (mm / (1000 * 60)) % 60;
-        let hr = (mm / (1000 * 60 * 60)) % 24;
+
+        let sec =   (0.001 * mm) % 60;
+        let min = ((0.0001 * mm) / 6) % 60;
+        let hr = ((0.00001 * mm) / 36) % 24;
         replier.reply("현재 가동 시간: " + Math.floor(hr) + "시간 " + Math.floor(min) + "분 " + Math.floor(sec) + "초")
     }
     if ((sender == "꧁༺순둥딸기༻꧂") && (msg == ("/공지하기")) == 0) {
